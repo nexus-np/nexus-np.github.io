@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus - SAT Tutoring</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        /* Base styling (Copied from original) */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #1F2937;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        :root {
+            --accent-color: #4F46E5;
+            --accent-color-light: #6366F1;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .btn-primary {
+            box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.39);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.5);
+        }
+        .tab-active {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+        /* Scroll Reveal Animations (Copied from original) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transition-delay: var(--delay, 0s);
+        }
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { --delay: 0.1s; }
+        .delay-200 { --delay: 0.2s; }
+        .delay-300 { --delay: 0.3s; }
+        .delay-400 { --delay: 0.4s; }
+        .delay-500 { --delay: 0.5s; }
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <header class="fixed top-0 left-0 right-0 z-50 bg-opacity-80 backdrop-blur-md border-b border-gray-200" style="background-color: rgba(245, 245, 245, 0.8);">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html#home" class="text-2xl font-bold">
+                Nexus<span class="text-indigo-600">.</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html#about" class="text-gray-700 hover:text-indigo-600 transition-colors">About Us</a>
+                <a href="index.html#projects" class="text-gray-700 hover:text-indigo-600 transition-colors">Projects</a>
+                <a href="#home" class="font-semibold text-indigo-600 transition-colors">SAT Tutoring</a>
+                <a href="index.html#team" class="text-gray-700 hover:text-indigo-600 transition-colors">Team</a>
+                <a href="index.html#partner" class="text-gray-700 hover:text-indigo-600 transition-colors">Partnership</a>
+                <a href="index.html#contact" class="text-gray-700 hover:text-indigo-600 transition-colors">Contact</a>
+            </div>
+            
+            <button id="menu-btn" class="md:hidden z-50 text-2xl">
+                <ion-icon name="menu-outline" id="menu-open-icon" class="text-gray-900"></ion-icon>
+                <ion-icon name="close-outline" id="menu-close-icon" class="text-gray-900 hidden"></ion-icon>
+            </button>
+        </nav>
+        
+        <div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-3/4 bg-white shadow-xl transform translate-x-full border-l border-gray-200">
+            <div class="flex flex-col items-center justify-center h-full space-y-8 text-xl">
+                <a href="index.html#about" class="mobile-nav-link text-gray-700 hover:text-indigo-600 transition-colors">About Us</a>
+                <a href="index.html#projects" class="mobile-nav-link text-gray-700 hover:text-indigo-600 transition-colors">Projects</a>
+                <a href="#home" class="mobile-nav-link font-semibold text-indigo-600 transition-colors">SAT Tutoring</a>
+                <a href="index.html#team" class="mobile-nav-link text-gray-700 hover:text-indigo-600 transition-colors">Team</a>
+                <a href="index.html#partner" class="mobile-nav-link text-gray-700 hover:text-indigo-600 transition-colors">Partnership</a>
+                <a href="index.html#contact" class="mobile-nav-link text-gray-700 hover:text-indigo-600 transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <section id="home" class="relative text-center px-6 pt-40 pb-24 bg-gray-50 overflow-hidden">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-4 reveal">
+                    Free SAT Tutoring
+                </h1>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8 reveal delay-100">
+                    Join free, live, peer-led sessions. Master the SAT with top-scoring tutors from the Nexus community.
+                </p>
+                <div class="flex justify-center space-x-4 reveal delay-200">
+                    <a href='https://docs.google.com/forms/d/e/1FAIpQLSfp2wth1M9spjwSJmxgowLPPHjz4ZBGBezhUHd4_Ll_3Iv33A/viewform?usp=publish-editor' class="btn-primary bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-all duration-300">
+                        Interest form for Winter Bootcamp
+                    </a>
+                </div>
+            </div>
+            <div class="absolute -bottom-24 -left-24 w-72 h-72 bg-indigo-600 rounded-full opacity-5 filter blur-3xl"></div>
+            <div class="absolute -top-24 -right-24 w-72 h-72 bg-purple-600 rounded-full opacity-5 filter blur-3xl"></div>
+        </section>
+
+        <section id="topics" class="py-20 lg:py-32 px-6">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-12 reveal">
+                    Topics <span class="text-indigo-600">We Cover</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center reveal delay-100 border border-gray-100">
+                        <div class="mb-6 inline-block text-indigo-600">
+                           <ion-icon name="calculator-outline" class="text-5xl"></ion-icon>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">SAT Math</h3>
+                        <p class="text-gray-600">From simple linear equations to trigonometry, master the Math portion of the new SAT, taking full advantage of Desmos.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center reveal delay-200 border border-gray-100">
+                        <div class="mb-6 inline-block text-indigo-600">
+                            <ion-icon name="book-outline" class="text-5xl"></ion-icon>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">SAT Reading</h3>
+                        <p class="text-gray-600">Learn strategies for passage-based questions, evidence-finding, data analysis, and vocabulary questions.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-lg text-center reveal delay-300 border border-gray-100">
+                        <div class="mb-6 inline-block text-indigo-600">
+                            <ion-icon name="create-outline" class="text-5xl"></ion-icon>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">SAT Writing</h3>
+                        <p class="text-gray-600">Perfect your grammar, punctuation, and rhetorical skills to ace the grammar portion of the test.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="py-20 lg:py-32 px-6 bg-gray-50">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-16 reveal">
+                    How It <span class="text-indigo-600">Works</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <div class="reveal delay-100">
+                        <div class="relative flex items-center justify-center">
+                            <div class="absolute text-8xl font-extrabold text-gray-100 -z-10">01</div>
+                            <div class="mb-4 text-indigo-600">
+                                <ion-icon name="calendar-outline" class="text-6xl"></ion-icon>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Find a Session</h3>
+                        <p class="text-gray-600">Browse our schedule of upcoming live tutoring sessions for the topic you need.</p>
+                    </div>
+                    <div class="reveal delay-200">
+                        <div class="relative flex items-center justify-center">
+                            <div class="absolute text-8xl font-extrabold text-gray-100 -z-10">02</div>
+                            <div class="mb-4 text-indigo-600">
+                               <ion-icon name="videocam-outline" class="text-6xl"></ion-icon>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Join Live</h3>
+                        <p class="text-gray-600">Connect with a peer tutor and other students in a collaborative, small-group video call.</p>
+                    </div>
+                    <div class="reveal delay-300">
+                        <div class="relative flex items-center justify-center">
+                            <div class="absolute text-8xl font-extrabold text-gray-100 -z-10">03</div>
+                            <div class="mb-4 text-indigo-600">
+                                <ion-icon name="shield-checkmark-outline" class="text-6xl"></ion-icon>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">Master Concepts</h3>
+                        <p class="text-gray-600">Ask questions, work through problems, and build the confidence you need for test day.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="tutors" class="py-20 lg:py-32 px-6">
+            <div class="container mx-auto max-w-6xl">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-12 reveal">
+                    Meet Your <span class="text-indigo-600">Peer Tutors</span>
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center reveal delay-100">
+                        <img src="https://placehold.co/300x300/E2E8F0/6B7280?text=Tutor" alt="Tutor Headshot" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-200 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-900">____________</h3>
+                        <p class="text-indigo-600 font-semibold mb-2">______</p>
+                    </div>
+                    <div class="text-center reveal delay-200">
+                        <img src="https://placehold.co/300x300/E2E8F0/6B7280?text=Tutor" alt="Tutor Headshot" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-200 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-900">___________</h3>
+                        <p class="text-indigo-600 font-semibold mb-2">______</p>
+                    </div>
+                    <div class="text-center reveal delay-300">
+                        <img src="https://placehold.co/300x300/E2E8F0/6B7280?text=Tutor" alt="Tutor Headshot" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-200 shadow-lg">
+                      <h3 class="text-xl font-bold text-gray-900">___________</h3>
+                                       <p class="text-indigo-600 font-semibold mb-2">______</p>
+                    </div>
+                    <div class="text-center reveal delay-400">
+                        <img src="https://placehold.co/300x300/E2E8F0/6B7280?text=Tutor" alt="Tutor Headshot" class="w-40 h-40 rounded-full mx-auto mb-4 border-4 border-gray-200 shadow-lg">
+                             <h3 class="text-xl font-bold text-gray-900">___________</h3>
+                        <p class="text-indigo-600 font-semibold mb-2">______</p>                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="py-20 lg:py-32 px-6 bg-gray-50">
+            <div class="container mx-auto max-w-4xl">
+                 <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-12 reveal">
+                    What Students <span class="text-indigo-600">Are Saying</span>
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-lg shadow-md border-l-4 border-indigo-500 reveal delay-100">
+                        <blockquote class="flex flex-col h-full">
+                            <p class="text-lg text-gray-600 italic flex-grow">"Nexus tutoring was a game-changer. My score went up 150 points after just a few sessions! The tutors are students too, so they actually get it."</p>
+                            <footer class="mt-6">
+                                <p class="font-semibold text-gray-900">— ________</p>
+                                <p class="text-sm text-gray-500">Junior</p>
+                            </footer>
+                        </blockquote>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-md border-l-4 border-indigo-500 reveal delay-200">
+                        <blockquote class="flex flex-col h-full">
+                            <p class="text-lg text-gray-600 italic flex-grow">"I was always stuck on the second module of the Math section. Having a peer tutor walk me through the problems live was so much more helpful than just watching videos."</p>
+                            <footer class="mt-6">
+                                <p class="font-semibold text-gray-900">— ________</p>
+                                <p class="text-sm text-gray-500">Sophomore</p>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="partner" class="py-20 lg:py-32 px-6">
+            <div class="container mx-auto max-w-4xl text-center">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-6 reveal">
+                    Ready to <span class="text-indigo-600">Boost Your Score?</span>
+                </h2>
+                <p class="text-lg text-gray-600 leading-relaxed mb-10 reveal delay-100">
+                    All our SAT tutoring sessions are 100% free and run by passionate, high-scoring student volunteers. Sign up to get access to our session schedule today.
+                </p>
+                <a href="#home" class="btn-primary bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-all duration-300 reveal delay-200">
+                    Sign Up for Free
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-12 px-6 border-t border-gray-200">
+        <div class="container mx-auto max-w-6xl flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div>
+                <a href="#home" class="text-xl font-bold text-gray-900">
+                    Nexus<span class="text-indigo-600">.</span>
+                </a>
+                <p class="text-gray-500 text-sm mt-2">
+                    &copy; 2025 Nexus. All rights reserved. <br> A student-led non-profit initiative.
+                </p>
+            </div>
+            <div class="mt-4 md:mt-0">
+                <a href="#" class="text-gray-500 hover:text-indigo-600 transition-colors text-2xl">
+                   <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+            </div>
+        </div>
+    </footer>
+    
+    <button id="to-top-btn" class="fixed bottom-6 right-6 w-12 h-12 flex items-center justify-center bg-indigo-600 hover:bg-indigo-500 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 transform translate-y-4 text-2xl">
+       <ion-icon name="arrow-up-outline"></ion-icon>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            const toggleMenu = () => {
+                mobileMenu.classList.toggle('translate-x-full');
+                menuOpenIcon.classList.toggle('hidden');
+                menuCloseIcon.classList.toggle('hidden');
+                document.body.classList.toggle('overflow-hidden'); 
+            };
+            menuBtn.addEventListener('click', toggleMenu);
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
+            const toTopBtn = document.getElementById('to-top-btn');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    toTopBtn.classList.remove('opacity-0', 'translate-y-4');
+                } else {
+                    toTopBtn.classList.add('opacity-0', 'translate-y-4');
+                }
+            });
+            toTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
+
