@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexathon - The Nexus Edutech Hackathon</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+
+    <style>
+        /* Base styling for DARK MODE */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #1F2937; /* Dark theme background */
+            color: #E5E7EB; /* Light text for readability */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Custom accent color */
+        :root {
+            --accent-color: #6366F1; /* Indigo-500 for dark mode contrast */
+            --accent-color-light: #818CF8; /* Indigo-400 */
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom gradient for hero */
+        .hero-gradient {
+            /* Subtle indigo glow from the bottom on a dark background */
+            background: radial-gradient(ellipse at bottom, rgba(99, 102, 241, 0.1) 0%, rgba(31, 41, 55, 0) 70%);
+        }
+
+        /* Custom glow effect for buttons */
+        .btn-primary {
+            box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.39);
+        }
+        .btn-primary:hover {
+            box-shadow: 0 6px 20px 0 rgba(99, 102, 241, 0.5);
+        }
+        
+        /* --- Scroll Reveal Animations (Copied) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55), transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transition-delay: var(--delay, 0s);
+        }
+        .reveal-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { --delay: 0.1s; }
+        .delay-200 { --delay: 0.2s; }
+        .delay-300 { --delay: 0.3s; }
+        .delay-400 { --delay: 0.4s; }
+        .delay-500 { --delay: 0.5s; }
+
+        /* Mobile menu transition */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Custom class for Space Mono font */
+        .font-space-mono {
+            font-family: 'Space Mono', monospace;
+        }
+
+        /* Specific styles for dark mode header/footer */
+        .dark-header-bg {
+            background-color: rgba(31, 41, 55, 0.8); /* Darker background for header */
+        }
+        .dark-footer-border {
+            border-color: #374151; /* Darker border for footer */
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+<header class="fixed top-0 left-0 right-0 z-50 dark-header-bg backdrop-blur-md border-b border-gray-700">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="index.html" class="text-2xl font-bold text-gray-100">
+            Nexus<span class="text-indigo-500">.</span>
+        </a>
+        
+        <div class="hidden md:flex space-x-8">
+            <a href="/index.html#about" class="text-gray-300 hover:text-indigo-400 transition-colors">About Us</a>
+            <a href="/index.html#projects" class="text-gray-300 hover:text-indigo-400 transition-colors">Projects</a>
+            <a href="/sat.html" class="text-gray-300 hover:text-indigo-400 transition-colors">SAT Tutoring</a>
+            <a href="nexathon.html" class="font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">Nexathon</a>
+                        <a href="/index.html#partner" class="text-gray-300 hover:text-indigo-400 transition-colors">Partnership</a>
+
+            <a href="/index.html#team" class="text-gray-300 hover:text-indigo-400 transition-colors">Team</a>
+            <a href="/index.html#contact" class="text-gray-300 hover:text-indigo-400 transition-colors">Contact</a>
+        </div>
+        
+        <button id="menu-btn" class="md:hidden z-50">
+            <svg id="menu-open-icon" class="w-6 h-6 text-gray-100" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                <path d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+            <svg id="menu-close-icon" class="w-6 h-6 text-gray-100 hidden" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                <path d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+    </nav>
+    
+    <div id="mobile-menu" class="md:hidden fixed top-0 right-0 h-full w-3/4 bg-gray-800 shadow-xl transform translate-x-full border-l border-gray-700">
+        <div class="flex flex-col items-center justify-center h-full space-y-8 text-xl">
+            <a href="index.html#about" class="mobile-nav-link text-gray-100 hover:text-indigo-400 transition-colors">About Us</a>
+            <a href="index.html#projects" class="mobile-nav-link text-gray-100 hover:text-indigo-400 transition-colors">Projects</a>
+            <a href="/sat.html" class="mobile-nav-link text-gray-100 hover:text-indigo-400 transition-colors">SAT Tutoring</a>
+            <a href="nexathon.html" class="mobile-nav-link font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">Nexathon</a>
+            <a href="index.html#team" class="mobile-nav-link text-gray-100 hover:text-indigo-400 transition-colors">Team</a>
+            <a href="index.html#contact" class="mobile-nav-link text-gray-100 hover:text-indigo-400 transition-colors">Contact</a>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <section class="relative min-h-screen flex items-center pt-32 pb-20 px-6 hero-gradient overflow-hidden">
+        <div class="container mx-auto max-w-6xl">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2 text-center lg:text-left">
+                    <p class="font-space-mono text-indigo-400 font-semibold mb-3 reveal delay-100">
+                        EVENT_ID::NEXATHON_2025
+                    </p>
+                    <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold text-gray-50 leading-tight mb-6 reveal delay-200">
+                        Nexathon
+                    </h1>
+                    <p class="text-xl lg:text-2xl text-gray-300 max-w-lg mx-auto lg:mx-0 mb-6 reveal delay-300">
+                        A virtual hackathon dedicated to building the future of <strong class="font-semibold text-gray-100">Education Technology</strong>.
+                    </p>
+                    <p class="font-space-mono text-gray-400 text-lg mb-10 reveal delay-400">
+                        DATE: 11.23.2025 - 11.30.2025
+                    </p>
+                    <div class="flex justify-center lg:justify-start space-x-4 reveal delay-500">
+                        <a href="#register" class="btn-primary bg-indigo-500 hover:bg-indigo-400 text-white font-semibold py-3 px-8 rounded-lg text-lg transition-all duration-300">
+                            Register Now
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hidden lg:flex lg:w-1/2 items-center justify-center reveal delay-300">
+                    <pre class="font-space-mono text-sm text-indigo-200 leading-5 select-none">
+[<span class="text-indigo-400">init</span>] Loading modules...
+[<span class="text-indigo-400">init</span>] Module <span class="text-gray-400">'edutech-core'</span> loaded.
+[<span class="text-indigo-400">init</span>] Module <span class="text-gray-400">'ai-learning-path'</span> loaded.
+[<span class="text-indigo-400">init</span>] Module <span class="text-gray-400">'vr-classroom-sdk'</span> loaded.
+[<span class="text-indigo-400">auth</span>] Awaiting student connections...
+[<span class="text-green-400">conn</span>] New connection from 127.0.0.1
+[<span class="text-green-400">conn</span>] User 'Student_01' joined.
+[<span class="text-green-400">conn</span>] New connection from 192.168.4.1
+[<span class="text-green-400">conn</span>] User 'Student_02' joined.
+[<span class="text-indigo-400">task</span>] Assigning challenge: 'Personalized Tutors'
+[<span class="text-indigo-400">task</span>] Assigning challenge: 'Gamified History'
+[<span class="text-gray-400">....</span>] 
+[<span class="text-indigo-400">core</span>] System stable. Ready for hackathon.
+[<span class="text-indigo-400">exec</span>] <span class="text-white">RunEvent(Nexathon);</span>
+<span class="text-white animate-pulse">_</span>
+                    </pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section id="why" class="py-20 lg:py-32 px-6 bg-gray-900"> -->
+    <!--     <div class="container mx-auto max-w-6xl"> -->
+    <!--         <h2 class="text-3xl lg:text-4xl font-bold text-gray-50 text-center mb-12 reveal"> -->
+    <!--             Why Join <span class="text-indigo-400">Nexathon?</span> -->
+    <!--         </h2> -->
+    <!--         <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center"> -->
+    <!--             <div class="reveal delay-100"> -->
+    <!--                 <div class="p-6 bg-indigo-700 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center"> -->
+    <!--                     <svg class="w-10 h-10 text-indigo-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg> -->
+    <!--                 </div> -->
+    <!--                 <h3 class="text-2xl font-bold text-gray-50 mb-3">Build Real Solutions</h3> -->
+    <!--                 <p class="text-gray-300 leading-relaxed"> -->
+    <!--                     Tackle real-world challenges in education. Create a project that could change how students learn, teachers teach, and schools operate. -->
+    <!--                 </p> -->
+    <!--             </div> -->
+    <!--             <div class="reveal delay-200"> -->
+    <!--                 <div class="p-6 bg-indigo-700 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center"> -->
+    <!--                     <svg class="w-10 h-10 text-indigo-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg> -->
+    <!--                 </div> -->
+    <!--                 <h3 class="text-2xl font-bold text-gray-50 mb-3">Network & Learn</h3> -->
+    <!--                 <p class="text-gray-300 leading-relaxed"> -->
+    <!--                     Connect with fellow students -->
+    <!--                 </p> -->
+    <!--             </div> -->
+    <!--             <div class="reveal delay-300"> -->
+    <!--                 <div class="p-6 bg-indigo-700 rounded-full w-20 h-20 mx-auto mb-6 flex items-center justify-center"> -->
+    <!--                     <svg class="w-10 h-10 text-indigo-100" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"></path></svg> -->
+    <!--                 </div> -->
+    <!--                 <h3 class="text-2xl font-bold text-gray-50 mb-3">Win Prizes</h3> -->
+    <!--                 <p class="text-gray-300 leading-relaxed"> -->
+    <!--                     Compete for a pool of cash prizes, software subscriptions, and exclusive swag. All participants who submit a project get something! -->
+    <!--                 </p> -->
+    <!--             </div> -->
+    <!--         </div> -->
+    <!--     </div> -->
+    <!-- </section> -->
+
+    <section id="theme" class="py-20 lg:py-32 px-6">
+        <div class="container mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-50 mb-6">
+                    This Year's Theme: <span class="text-indigo-400">Edutech</span>
+                </h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-4">
+                    The field of education is ripe for disruption. From personalized learning paths powered by AI to immersive AR/VR classrooms, the possibilities are endless.
+                </p>
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    We're challenging you to build a project that addresses a key problem in education. This could be a tool for:
+                </p>
+                <ul class="list-disc list-inside text-lg text-gray-300 leading-relaxed mt-4 space-y-2">
+                    <li>Student accessibility and inclusion</li>
+                    <li>Teacher automation and support</li>
+                    <li>Gamified learning and engagement</li>
+                    <li>Lifelong learning and skill development</li>
+                </ul>
+            </div>
+            <div class="reveal delay-200">
+                <img src="https://onlinedegrees.sandiego.edu/wp-content/uploads/2019/12/educational-technology.jpg" alt="Edutech Illustration" class="rounded-lg shadow-xl w-full">
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="py-20 lg:py-32 px-6 bg-gray-900">
+        <div class="container mx-auto max-w-3xl">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-50 text-center mb-16 reveal">
+                Event <span class="text-indigo-400">Schedule</span>
+            </h2>
+            
+            <div class="relative">
+                <div class="absolute left-1/2 w-0.5 h-full bg-indigo-700 -translate-x-1/2 hidden md:block"></div>
+
+                <div class="relative mb-12 reveal">
+                    <div class="flex flex-col md:flex-row items-center md:justify-end md:space-x-8">
+                        <div class="w-full md:w-1/2 text-center md:text-right mb-4 md:mb-0 pr-8 md:pr-0">
+                            <h3 class="text-2xl font-bold text-gray-50">Opening Ceremony</h3>
+                            <p class="text-lg font-semibold text-indigo-400">Oct 23rd</p>
+                            <p class="text-gray-300">Kick-off, theme reveal, and keynote speech.</p>
+                        </div>
+                        <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-indigo-500 rounded-full z-10"></div>
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+                </div>
+
+                <div class="relative mb-12 reveal">
+                    <div class="flex flex-col md:flex-row items-center md:space-x-8">
+                        <div class="hidden md:block md:w-1/2"></div>
+                        <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-indigo-500 rounded-full z-10"></div>
+                        <div class="w-full md:w-1/2 text-center md:text-left mb-4 md:mb-0 pl-8 md:pl-0">
+                            <h3 class="text-2xl font-bold text-gray-50">Hacking Begins</h3>
+                            <p class="text-lg font-semibold text-indigo-400">Oct 23rd - 30th</p>
+                            <p class="text-gray-300">Build your teams, attend workshops, and code!</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative mb-12 reveal">
+                    <div class="flex flex-col md:flex-row items-center md:justify-end md:space-x-8">
+                        <div class="w-full md:w-1/2 text-center md:text-right mb-4 md:mb-0 pr-8 md:pr-0">
+                            <h3 class="text-2xl font-bold text-gray-50">Submissions Due</h3>
+                            <p class="text-lg font-semibold text-indigo-400">Oct 30th (Midnight)</p>
+                            <p class="text-gray-300">Final projects must be submitted for judging.</p>
+                        </div>
+                        <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-indigo-500 rounded-full z-10"></div>
+                        <div class="hidden md:block md:w-1/2"></div>
+                    </div>
+                </div>
+
+                <div class="relative mb-12 reveal">
+                    <div class="flex flex-col md:flex-row items-center md:space-x-8">
+                        <div class="hidden md:block md:w-1/2"></div>
+                        <div class="hidden md:block absolute left-1/2 -translate-x-1/2 w-6 h-6 bg-indigo-500 rounded-full z-10"></div>
+                        <div class="w-full md:w-1/2 text-center md:text-left mb-4 md:mb-0 pl-8 md:pl-0">
+                            <h3 class="text-2xl font-bold text-gray-50">Closing Ceremony</h3>
+                            <p class="text-lg font-semibold text-indigo-400">Oct 30th</p>
+                            <p class="text-gray-300">Winner announcements and final showcase.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+    <section id="register" class="py-20 lg:py-32 px-6">
+        <div class="container mx-auto max-w-3xl text-center">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-50 mb-6 reveal">
+                Ready to Build the <span class="text-indigo-400">Future of Education?</span>
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-10 reveal delay-100">
+                Registration is free but spots are limited. Form your team (or find one!) and sign up today to secure your place at Nexathon.
+            </p>
+            <a href="#" class="btn-primary bg-indigo-500 hover:bg-indigo-400 text-white font-semibold py-4 px-10 rounded-lg text-xl transition-all duration-300 reveal delay-200">
+                Register for Nexathon
+            </a>
+        </div>
+    </section>
+
+</main>
+<footer class="py-12 px-6 dark-footer-border border-t border-gray-700">
+    <div class="container mx-auto max-w-6xl flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+        <div>
+            <a href="index.html" class="text-xl font-bold text-gray-100">
+                Nexus<span class="text-indigo-500">.</span>
+            </a>
+            <p class="text-gray-400 text-sm mt-2">
+                &copy; 2025 Nexus. All rights reserved. <br> A student-led non-profit initiative.
+            </p>
+        </div>
+        <div class="mt-4 md:mt-0">
+            <a href="#" class="text-gray-400 hover:text-indigo-400 transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 3.5h-9A4.012 4.012 0 003.5 7.5v9a4.012 4.012 0 004.0 4.0h9a4.012 4.012 0 004.0-4.0v-9A4.012 4.012 0 0016.5 3.5z"></path><circle cx="12" cy="12" r="4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></circle><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></line></svg>
+            </a>
+        </div>
+    </div>
+</footer>
+    
+<button id="to-top-btn" class="fixed bottom-6 right-6 p-3 bg-indigo-500 hover:bg-indigo-400 text-white rounded-full shadow-lg transition-all duration-300 opacity-0 transform translate-y-4">
+    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+</button>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- Mobile Menu Toggle ---
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuOpenIcon = document.getElementById('menu-open-icon');
+        const menuCloseIcon = document.getElementById('menu-close-icon');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        const toggleMenu = () => {
+            mobileMenu.classList.toggle('translate-x-full');
+            menuOpenIcon.classList.toggle('hidden');
+            menuCloseIcon.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden'); // Optional: prevent scrolling when menu is open
+        };
+
+        menuBtn.addEventListener('click', toggleMenu);
+        
+        // Close menu when a nav link is clicked
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        // --- Scroll Reveal Animations ---
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal-visible');
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        revealElements.forEach(el => {
+            observer.observe(el);
+        });
+        
+        // --- Back to Top Button ---
+        const toTopBtn = document.getElementById('to-top-btn');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                toTopBtn.classList.remove('opacity-0', 'translate-y-4');
+            } else {
+                toTopBtn.classList.add('opacity-0', 'translate-y-4');
+            }
+        });
+        
+        toTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+    });
+</script>
+
+</body>
+</html>
